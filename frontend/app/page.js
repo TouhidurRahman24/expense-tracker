@@ -62,10 +62,10 @@ export default function Home() {
     : expenses;
 
   return (
-    <div className="container mx-auto p-4 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-6 text-center">Personal Expense Tracker</h1>
+    <div className="container mx-auto p-4 max-w-4xl bg-white min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-900">Personal Expense Tracker</h1>
       
-      <div className="mb-8">
+      <div className="mb-8 shadow-md rounded-lg bg-white p-6 border border-gray-200">
         <ExpenseForm 
           onSubmit={addOrUpdateExpense} 
           editingExpense={editingExpense}
@@ -74,16 +74,16 @@ export default function Home() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Expenses Overview</h2>
-          <p className="text-xl mb-4">Total Expenses: ${totalAmount.toFixed(2)}</p>
+        <div className="shadow-md rounded-lg bg-white p-6 border border-gray-200">
+          <h2 className="text-2xl font-semibold mb-4 text-gray-900">Expenses Overview</h2>
+          <p className="text-xl mb-4 text-gray-800">Total Expenses: ${totalAmount.toFixed(2)}</p>
           
           <div className="mb-4">
-            <label className="block mb-2">Filter by Category:</label>
+            <label className="block mb-2 text-gray-700 font-medium">Filter by Category:</label>
             <select 
               value={filterCategory} 
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
             >
               <option value="">All</option>
               {categories.map(cat => (
@@ -100,8 +100,8 @@ export default function Home() {
           />
         </div>
         
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Expenses by Category</h2>
+        <div className="shadow-md rounded-lg bg-white p-6 border border-gray-200">
+          <h2 className="text-2xl font-semibold mb-4 text-gray-900">Expenses by Category</h2>
           <ExpenseChart expenses={expenses} />
         </div>
       </div>

@@ -31,64 +31,64 @@ const ExpenseForm = ({ onSubmit, editingExpense, categories }) => {
     if (!editingExpense) resetForm();
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
-      <h2 className="text-xl font-semibold mb-4">{editingExpense ? 'Edit Expense' : 'Add Expense'}</h2>
-      
-      <div className="mb-4">
-        <label className="block mb-1">Title</label>
-        <input 
-          type="text" 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
-          className="w-full p-2 border rounded"
-          required 
-          minLength={3}
-        />
-      </div>
-      
-      <div className="mb-4">
-        <label className="block mb-1">Amount</label>
-        <input 
-          type="number" 
-          value={amount} 
-          onChange={(e) => setAmount(e.target.value)} 
-          className="w-full p-2 border rounded"
-          required 
-          min={0.01}
-          step="0.01"
-        />
-      </div>
-      
-      <div className="mb-4">
-        <label className="block mb-1">Category</label>
-        <select 
-          value={category} 
-          onChange={(e) => setCategory(e.target.value)} 
-          className="w-full p-2 border rounded"
-          required
-        >
-          {categories.map(cat => (
-            <option key={cat} value={cat}>{cat}</option>
-          ))}
-        </select>
-      </div>
-      
-      <div className="mb-4">
-        <label className="block mb-1">Date</label>
-        <DatePicker 
-          selected={date} 
-          onChange={(date) => setDate(date)} 
-          className="w-full p-2 border rounded"
-          required
-        />
-      </div>
-      
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-        {editingExpense ? 'Update' : 'Add'}
-      </button>
-    </form>
-  );
+return (
+  <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+    <h2 className="text-xl font-semibold mb-4 text-gray-900">{editingExpense ? 'Edit Expense' : 'Add Expense'}</h2>
+    
+    <div className="mb-4">
+      <label className="block mb-1 text-gray-700 font-medium">Title</label>
+      <input 
+        type="text" 
+        value={title} 
+        onChange={(e) => setTitle(e.target.value)} 
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+        required 
+        minLength={3}
+      />
+    </div>
+    
+    <div className="mb-4">
+      <label className="block mb-1 text-gray-700 font-medium">Amount</label>
+      <input 
+        type="number" 
+        value={amount} 
+        onChange={(e) => setAmount(e.target.value)} 
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+        required 
+        min={0.01}
+        step="0.01"
+      />
+    </div>
+    
+    <div className="mb-4">
+      <label className="block mb-1 text-gray-700 font-medium">Category</label>
+      <select 
+        value={category} 
+        onChange={(e) => setCategory(e.target.value)} 
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+        required
+      >
+        {categories.map(cat => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
+    </div>
+    
+    <div className="mb-4">
+      <label className="block mb-1 text-gray-700 font-medium">Date</label>
+      <DatePicker 
+        selected={date} 
+        onChange={(date) => setDate(date)} 
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+        required
+      />
+    </div>
+    
+    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200">
+      {editingExpense ? 'Update' : 'Add'}
+    </button>
+  </form>
+);
 };
 
 export default ExpenseForm;

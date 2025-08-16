@@ -13,7 +13,7 @@ const ExpenseChart = ({ expenses }) => {
     return acc;
   }, []);
 
-  if (data.length === 0) return <p>No data for chart</p>;
+  if (data.length === 0) return <p className='text-black'>No data for chart</p>;
 
   return (
     <ResponsiveContainer width="100%" height={300}>
