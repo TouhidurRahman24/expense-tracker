@@ -18,7 +18,7 @@ export default function Home() {
 
   const fetchExpenses = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/expenses');
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/expenses`);
       setExpenses(res.data);
     } catch (err) {
       console.error('Error fetching expenses:', err);
@@ -28,11 +28,11 @@ export default function Home() {
   const addOrUpdateExpense = async (expense) => {
     try {
       if (editingExpense) {
-        const res = await axios.patch(`http://localhost:5000/expenses/${editingExpense._id}`, expense);
+        const res = await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/expenses/${editingExpense._id}`, expense);
         setExpenses(expenses.map(exp => exp._id === res.data._id ? res.data : exp));
         setEditingExpense(null);
       } else {
-        const res = await axios.post('http://localhost:5000/expenses', expense);
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/expenses`, expense);
         setExpenses([...expenses, res.data]);
       }
     } catch (err) {
@@ -43,7 +43,7 @@ export default function Home() {
   const deleteExpense = async (id) => {
     if (confirm('Are you sure you want to delete this expense?')) {
       try {
-        await axios.delete(`http://localhost:5000/expenses/${id}`);
+        await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/expenses/${id}`);
         setExpenses(expenses.filter(exp => exp._id !== id));
       } catch (err) {
         console.error('Error deleting expense:', err);
